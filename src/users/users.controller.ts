@@ -19,19 +19,19 @@ export class UsersController {
 
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this.usersService.createUser(createUserDto);
+    return await this.usersService.createUser(createUserDto);
   }
 
   @Get()
   async getAllUsers(): Promise<User[]> {
-    return this.usersService.getAllUsers();
+    return await this.usersService.getAllUsers();
   }
 
   @Get(':id')
   async getOneUser(
     @Param('id', ParseIntPipe) id: number,
   ): Promise<User | null> {
-    return this.usersService.getOneUser(id);
+    return await this.usersService.getOneUser(id);
   }
 
   @Patch(':id')
@@ -39,11 +39,11 @@ export class UsersController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserDto: UpdateUserdto,
   ): Promise<User> {
-    return this.usersService.updateUser(id, updateUserDto);
+    return await this.usersService.updateUser(id, updateUserDto);
   }
 
   @Delete(':id')
   async deleteUser(@Param('id', ParseIntPipe) id: number): Promise<User> {
-    return this.usersService.deleteUser(id);
+    return await this.usersService.deleteUser(id);
   }
 }
