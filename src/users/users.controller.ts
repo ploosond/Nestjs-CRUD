@@ -12,6 +12,7 @@ import { UsersService } from './users.service';
 import { User } from 'generated/prisma';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserdto } from './dto/update-user.dto';
+import { Public } from 'src/auth/public.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -22,6 +23,7 @@ export class UsersController {
     return await this.usersService.createUser(createUserDto);
   }
 
+  @Public()
   @Get()
   async getAllUsers(): Promise<User[]> {
     return await this.usersService.getAllUsers();
